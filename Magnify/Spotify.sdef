@@ -18,60 +18,60 @@
         </value-type>
         <class name="application" code="capp" description="The Spotify application.">
             <cocoa class="ClientApplication"/>
-            <property name="current track" code="pTrk" description="The current playing track." type="track" access="r">
-                <cocoa key="currentTrack"/>
-            </property>
-            <property name="sound volume" code="pVol" description="The sound output volume (0 = minimum, 100 = maximum)" type="integer">
-                <cocoa key="soundVolume"/>
-            </property>
-            <property name="player state" code="pPlS" description="Is Spotify stopped, paused, or playing?" type="ePlS" access="r">
-                <cocoa key="playerState"/>
-            </property>
-            <property name="player position" code="pPos" description="The playerâ€™s position within the currently playing track in seconds." type="real">
-                <cocoa key="playbackPosition"/>
-            </property>
+<!--            <property name="current track" code="pTrk" description="The current playing track." type="track" access="r">-->
+<!--                <cocoa key="currentTrack"/>-->
+<!--            </property>-->
+<!--            <property name="sound volume" code="pVol" description="The sound output volume (0 = minimum, 100 = maximum)" type="integer">-->
+<!--                <cocoa key="soundVolume"/>-->
+<!--            </property>-->
+<!--            <property name="player state" code="pPlS" description="Is Spotify stopped, paused, or playing?" type="ePlS" access="r">-->
+<!--                <cocoa key="playerState"/>-->
+<!--            </property>-->
+<!--            <property name="player position" code="pPos" description="The playerâ€™s position within the currently playing track in seconds." type="real">-->
+<!--                <cocoa key="playbackPosition"/>-->
+<!--            </property>-->
             <property name="repeating enabled" code="pReE" description="Is repeating enabled in the current playback context?" type="boolean" access="r">
                 <cocoa key="repeatEnabled"/>
             </property>
-            <property name="repeating" code="pRep" description="Is repeating on or off?" type="boolean">
-                <cocoa key="repeat"/>
-            </property>
+<!--            <property name="repeating" code="pRep" description="Is repeating on or off?" type="boolean">-->
+<!--                <cocoa key="repeat"/>-->
+<!--            </property>-->
             <property name="shuffling enabled" code="pReE" description="Is shuffling enabled in the current playback context?" type="boolean" access="r">
                 <cocoa key="shuffleEnabled"/>
             </property>
-            <property name="shuffling" code="pShu" description="Is shuffling on or off?" type="boolean">
-                <cocoa key="shuffle"/>
-            </property>
+<!--            <property name="shuffling" code="pShu" description="Is shuffling on or off?" type="boolean">-->
+<!--                <cocoa key="shuffle"/>-->
+<!--            </property>-->
         </class>
         <class name="track" code="spTr" description="A Spotify track." plural="tracks">
             <cocoa class="SPAppleScriptTrack"/>
-            <property name="artist" code="pArt" description="The artist of the track." type="text" access="r">
-                <cocoa key="artist"/>
-            </property>
-            <property name="album" code="pAlb" description="The album of the track." type="text" access="r">
-                <cocoa key="album"/>
-            </property>
-            <property name="disc number" code="pDsN" description="The disc number of the track." type="integer" access="r">
-                <cocoa key="discNumber"/>
-            </property>
-            <property name="duration" code="pDur" description="The length of the track in seconds." type="integer" access="r">
-                <cocoa key="duration"/>
-            </property>
+<!--            <property name="artist" code="pArt" description="The artist of the track." type="text" access="r">-->
+<!--                <cocoa key="artist"/>-->
+<!--            </property>-->
+<!--            <property name="album" code="pAlb" description="The album of the track." type="text" access="r">-->
+<!--                <cocoa key="album"/>-->
+<!--            </property>-->
+<!--            <property name="disc number" code="pDsN" description="The disc number of the track." type="integer" access="r">-->
+<!--                <cocoa key="discNumber"/>-->
+<!--            </property>-->
+<!--            <property name="duration" code="pDur" description="The length of the track in seconds." type="integer" access="r">-->
+<!--                <cocoa key="duration"/>-->
+<!--            </property>-->
 <!--            <property name="played count" code="pPlC" description="The number of times this track has been played." type="integer" access="r">-->
 <!--                <cocoa key="playCount"/>-->
 <!--            </property>-->
-            <property name="track number" code="pTrN" description="The index of the track in its album." type="integer" access="r">
-                <cocoa key="trackNumber"/>
-            </property>
-            <property name="starred" code="spSt" description="Is the track starred?" type="boolean" access="r">
-                <cocoa key="starred"/>
-            </property>
+<!--            <property name="track number" code="pTrN" description="The index of the track in its album." type="integer" access="r">-->
+<!--                <cocoa key="trackNumber"/>-->
+<!--            </property>-->
+<!--            <property name="starred" code="spSt" description="Is the track starred?" type="boolean" access="r">-->
+<!--                <cocoa key="starred"/>-->
+<!--            </property>-->
 <!--            <property name="popularity" code="spPo" description="How popular is this track? 0-100" type="integer" access="r">-->
 <!--                <cocoa key="popularity"/>-->
 <!--            </property>-->
-            <property name="id" code="ID  " description="The ID of the item." type="text" access="r">
-                <cocoa key="applescriptID"/>
-            </property>
+<!--            <property name="id" code="ID  " description="The ID of the item." type="text" access="r">-->
+<!--                <cocoa key="applescriptID"/>-->
+<!--            </property>-->
 <!--            <property name="name" code="pnam" description="The name of the track." type="text" access="r">-->
 <!--                <cocoa key="title"/>-->
 <!--            </property>-->

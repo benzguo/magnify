@@ -5,6 +5,12 @@
 
 import Foundation
 
+enum SpotifyPlayerState : String {
+    case Paused = "paused"
+    case Playing = "playing"
+    case Stopped = "stopped"
+}
+
 class SpotifyController {
 
     class func task(command: String) -> String? {
@@ -18,18 +24,58 @@ class SpotifyController {
         task.waitUntilExit()
         let outHandle = outPipe.fileHandleForReading
         let output = NSString(data: outHandle.availableData, encoding: NSASCIIStringEncoding)
-        return output
+        return output as String?
     }
 
     class func trackInfoTask(command: String) -> String? {
         return task("\(command) of current track")
     }
 
+// MARK: Composite commands
+    class func setRepeating(repeating: Bool) {
+        let maybeCurrent = isRepeating()
+        if let current = maybeCurrent {
+            if current == repeating { return }
+            else { task("set repeating to not repeating") }
+        }
+    }
+
+    class func setShuffling(shuffling: Bool) {
+        let maybeCurrent = isShuffling()
+        if let current = maybeCurrent {
+            if current == shuffling { return }
+            else { task("set shuffling to not shuffling") }
+        }
+    }
+
 // MARK: Application Info
+    /// Is repeating on or off?
+    class func isRepeating() -> Bool? { return task("repeating")?.rangeOfString("true") != nil }
+
+    /// Is shuffling on or off?
+    class func isShuffling() -> Bool? { return task("shuffling")?.rangeOfString("true") != nil }
+
+    /// The sound output volume (0 = minimum, 100 = maximum)
+    class func volume() -> Int? { return task("sound volume")?.toInt() }
+
+    /// The player's position within the currently playing track in seconds.
+    /// Note: this doesn't appear to work on (1.0.3.101.gbfa97dfe)
+    class func playerPosition() -> Float? {
+        return task("player position").map { ($0 as NSString).floatValue }
+    }
+
+    /// Is Spotify stopped, paused, or playing?
+    class func playerState() -> SpotifyPlayerState? {
+        return task("player state").flatMap { SpotifyPlayerState(rawValue: $0) }
+    }
 
 // MARK: Track Info
     /// The URL of the track.
     class func currentTrackURL() -> String? { return trackInfoTask("spotify url") }
+
+    /// The ID of the track.
+    /// Note: same as URL
+    class func currentTrackID() -> String? { return trackInfoTask("id") }
 
     /// The name of the track.
     class func currentTrackName() -> String? { return trackInfoTask("name") }
@@ -37,14 +83,29 @@ class SpotifyController {
     /// The artist of the track.
     class func currentTrackArtist() -> String? { return trackInfoTask("artist") }
 
+    /// The album of the track.
+    class func currentTrackAlbum() -> String? { return trackInfoTask("album") }
+
+    /// The track number of the track.
+    class func currentTrackNumber() -> Int? { return trackInfoTask("track number")?.toInt() }
+
+    /// The disc number of the track.
+    class func currentTrackDiscNumber() -> Int? { return trackInfoTask("disc number")?.toInt() }
+
     /// The album artist of the track.
     class func currentTrackAlbumArtist() -> String? { return trackInfoTask("album artist") }
 
+    /// The length of the track in seconds.
+    class func currentTrackDuration() -> Int? { return trackInfoTask("duration")?.toInt() }
+
     /// The number of times this track has been played.
-    class func currentTrackPlayCount() -> Int? { return trackInfoTask("played countk")?.toInt() }
+    class func currentTrackPlayCount() -> Int? { return trackInfoTask("played count")?.toInt() }
 
     /// How popular is this track? 0-100
     class func currentTrackPopularity() -> Int? { return trackInfoTask("popularity")?.toInt() }
+
+    /// Is the track starred?
+    class func currentTrackIsStarred() -> Bool? { return trackInfoTask("starred")?.rangeOfString("true") != nil }
 
 // MARK: Commands
     /// Pause playback.

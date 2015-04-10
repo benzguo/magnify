@@ -8,21 +8,43 @@
 
 import Cocoa
 
+struct Constants {
+    // The number of timer ticks between skips
+    static let skipInterval = 2
+
+    // The range (in timer ticks) of the random padding
+    static let randomPadRange = 2
+}
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    @IBOutlet weak var window: NSWindow!
     var _isEnabled = false
     var isEnabled: Bool {
         get {
             return _isEnabled
         }
         set(enabled) {
+            _isEnabled = enabled
             self.statusMenuItem.title = enabled ? "Magnify: On" : "Magnify: Off"
             self.onOffMenuItem.title = enabled ? "Turn Magnify Off" : "Turn Magnify On"
-            _isEnabled = enabled
+            if (enabled) {
+                SpotifyController.setRepeating(true)
+                self.timer.fireDate = NSDate(timeIntervalSinceNow: 1)
+            }
+            else {
+                SpotifyController.setRepeating(false)
+                self.timer.fireDate = NSDate.distantFuture() as! NSDate
+            }
         }
     }
+
+    var tickCount: Int = 0
+    var targetTickCount: Int = Constants.skipInterval
+    lazy var timer: NSTimer = {
+        return NSTimer.scheduledTimerWithTimeInterval(2,
+            target: self, selector: "timerTick", userInfo: nil, repeats: true)
+    }()
 
     lazy var statusItem: NSStatusItem = {
         let item = NSStatusBar.systemStatusBar().statusItemWithLength(-1)
@@ -66,18 +88,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         menu.autoenablesItems = false
         menu.addItem(self.statusMenuItem)
         menu.addItem(self.onOffMenuItem)
+        menu.addItem(NSMenuItem.separatorItem())
         menu.addItem(self.launchAtLoginMenuItem)
         menu.addItem(NSMenuItem.separatorItem())
         menu.addItem(self.quitMenuItem)
-
-        menu.addItem(NSMenuItem.separatorItem())
-        menu.addItem(NSMenuItem(title: "test", action: "test", keyEquivalent: ""))
-
         return menu
     }()
 
-    func test() {
-        print(SpotifyController.nextTrack())
+    func timerTick() {
+        tickCount++
+        if tickCount >= targetTickCount {
+            tickCount = 0
+            let randomPad = Int(arc4random_uniform(UInt32(Constants.randomPadRange)))
+            targetTickCount = Constants.skipInterval + randomPad
+            SpotifyController.nextTrack()
+            print("next\n")
+        }
+        print("tick\n")
     }
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
