@@ -12,6 +12,8 @@
 		962B975B1AD737A8001240D8 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 962B97591AD737A8001240D8 /* MainMenu.xib */; };
 		962B97671AD737A8001240D8 /* MagnifyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962B97661AD737A8001240D8 /* MagnifyTests.swift */; };
 		962B97761AD7457E001240D8 /* NSBundle+LoginItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 962B97751AD7457E001240D8 /* NSBundle+LoginItem.m */; };
+		96CA1BAB1AD7571F00398CFD /* SpotifyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CA1BAA1AD7571F00398CFD /* SpotifyController.swift */; };
+		96CA1BAD1AD7832E00398CFD /* Spotify.sdef in Resources */ = {isa = PBXBuildFile; fileRef = 96CA1BAC1AD7832E00398CFD /* Spotify.sdef */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 		962B97741AD7457E001240D8 /* NSBundle+LoginItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+LoginItem.h"; sourceTree = "<group>"; };
 		962B97751AD7457E001240D8 /* NSBundle+LoginItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+LoginItem.m"; sourceTree = "<group>"; };
 		962B977C1AD745FB001240D8 /* Magnify-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Magnify-Bridging-Header.h"; sourceTree = "<group>"; };
+		96CA1BAA1AD7571F00398CFD /* SpotifyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyController.swift; sourceTree = "<group>"; };
+		96CA1BAC1AD7832E00398CFD /* Spotify.sdef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Spotify.sdef; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,7 +81,9 @@
 		962B97521AD737A8001240D8 /* Magnify */ = {
 			isa = PBXGroup;
 			children = (
+				96CA1BAC1AD7832E00398CFD /* Spotify.sdef */,
 				962B97551AD737A8001240D8 /* AppDelegate.swift */,
+				96CA1BAA1AD7571F00398CFD /* SpotifyController.swift */,
 				962B977C1AD745FB001240D8 /* Magnify-Bridging-Header.h */,
 				962B97701AD74437001240D8 /* Vendor */,
 				962B97571AD737A8001240D8 /* Images.xcassets */,
@@ -202,6 +208,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				962B97581AD737A8001240D8 /* Images.xcassets in Resources */,
+				96CA1BAD1AD7832E00398CFD /* Spotify.sdef in Resources */,
 				962B975B1AD737A8001240D8 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -221,6 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				962B97561AD737A8001240D8 /* AppDelegate.swift in Sources */,
+				96CA1BAB1AD7571F00398CFD /* SpotifyController.swift in Sources */,
 				962B97761AD7457E001240D8 /* NSBundle+LoginItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

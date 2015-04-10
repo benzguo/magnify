@@ -69,8 +69,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         menu.addItem(self.launchAtLoginMenuItem)
         menu.addItem(NSMenuItem.separatorItem())
         menu.addItem(self.quitMenuItem)
+
+        menu.addItem(NSMenuItem.separatorItem())
+        menu.addItem(NSMenuItem(title: "test", action: "test", keyEquivalent: ""))
+
         return menu
     }()
+
+    func test() {
+        print(SpotifyController.nextTrack())
+    }
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         statusItem.menu = menu
