@@ -18,6 +18,7 @@
 		9621EDFC1AD8880B00074CF0 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9621EDF31AD8880B00074CF0 /* AFURLSessionManager.m */; };
 		9621EE001AD8881B00074CF0 /* NSUserDefaults+GroundControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 9621EDFF1AD8881B00074CF0 /* NSUserDefaults+GroundControl.m */; };
 		9621EE061AD88BBA00074CF0 /* defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9621EE051AD88BBA00074CF0 /* defaults.plist */; };
+		9621EE091AD88D3C00074CF0 /* NSUserDefaults+Magnify.m in Sources */ = {isa = PBXBuildFile; fileRef = 9621EE081AD88D3C00074CF0 /* NSUserDefaults+Magnify.m */; };
 		962B97561AD737A8001240D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962B97551AD737A8001240D8 /* AppDelegate.swift */; };
 		962B97581AD737A8001240D8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 962B97571AD737A8001240D8 /* Images.xcassets */; };
 		962B975B1AD737A8001240D8 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 962B97591AD737A8001240D8 /* MainMenu.xib */; };
@@ -60,6 +61,8 @@
 		9621EDFE1AD8881B00074CF0 /* NSUserDefaults+GroundControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+GroundControl.h"; sourceTree = "<group>"; };
 		9621EDFF1AD8881B00074CF0 /* NSUserDefaults+GroundControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+GroundControl.m"; sourceTree = "<group>"; };
 		9621EE051AD88BBA00074CF0 /* defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defaults.plist; sourceTree = SOURCE_ROOT; };
+		9621EE071AD88D3C00074CF0 /* NSUserDefaults+Magnify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+Magnify.h"; sourceTree = "<group>"; };
+		9621EE081AD88D3C00074CF0 /* NSUserDefaults+Magnify.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+Magnify.m"; sourceTree = "<group>"; };
 		962B97501AD737A8001240D8 /* Magnify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Magnify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		962B97541AD737A8001240D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		962B97551AD737A8001240D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -170,6 +173,8 @@
 				96CA1BAC1AD7832E00398CFD /* Spotify.sdef */,
 				962B97551AD737A8001240D8 /* AppDelegate.swift */,
 				962B977C1AD745FB001240D8 /* Magnify-Bridging-Header.h */,
+				9621EE071AD88D3C00074CF0 /* NSUserDefaults+Magnify.h */,
+				9621EE081AD88D3C00074CF0 /* NSUserDefaults+Magnify.m */,
 				962B97701AD74437001240D8 /* Vendor */,
 				962B97571AD737A8001240D8 /* Images.xcassets */,
 				962B97591AD737A8001240D8 /* MainMenu.xib */,
@@ -329,6 +334,7 @@
 				9621EDFC1AD8880B00074CF0 /* AFURLSessionManager.m in Sources */,
 				963D24171AD842E7007BFE12 /* SpotifyController.swift in Sources */,
 				962B97761AD7457E001240D8 /* NSBundle+LoginItem.m in Sources */,
+				9621EE091AD88D3C00074CF0 /* NSUserDefaults+Magnify.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,5 +11,6 @@
 
 #import "NSBundle+LoginItem.h"
 #import "NSUserDefaults+GroundControl.h"
+#import "NSUserDefaults+Magnify.h"
 
 #endif

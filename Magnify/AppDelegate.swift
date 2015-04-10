@@ -78,29 +78,30 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             statusItem.image = image
         }
     }
+
     lazy var statusItem: NSStatusItem = {
         let item = NSStatusBar.systemStatusBar().statusItemWithLength(-1)
-        item.highlightMode = true
-        return item
+        item.highlightMode = true; return item
     }()
 
     lazy var statusMenuItem: NSMenuItem = {
         let item = NSMenuItem(title: "Magnify: Off", action: nil, keyEquivalent: "")
-        item.enabled = false
-        return item
+        item.enabled = false; return item
     }()
 
     lazy var onOffMenuItem: NSMenuItem = {
         let item = NSMenuItem(title: "Turn Magnify On", action: "toggleOnOff", keyEquivalent: "")
-        item.enabled = true
-        return item
+        item.enabled = true; return item
     }()
+
+    func updateLaunchAtLoginMenuItem() {
+        let isLoginItem = NSBundle.mainBundle().isLoginItem()
+        launchAtLoginMenuItem.state = isLoginItem ? NSOnState : NSOffState
+    }
 
     lazy var launchAtLoginMenuItem: NSMenuItem = {
         let item = NSMenuItem(title: "Launch at login", action: "toggleLaunchAtLogin", keyEquivalent: "")
-        item.enabled = true
-        item.state = NSOffState
-        return item
+        item.enabled = true; item.state = NSOffState; return item
     }()
 
     func updatePlayCountMenuItem() {
@@ -109,16 +110,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let s = count == 1 ? "" : "s"
         playCountMenuItem.title = "\(count) play\(s)"
     }
+
     lazy var playCountMenuItem: NSMenuItem = {
         let item = NSMenuItem(title: "", action: "toggleLaunchAtLogin", keyEquivalent: "")
-        item.enabled = false
-        return item
+        item.enabled = false; return item
+    }()
+
+    lazy var playlistMenuItem: NSMenuItem = {
+        let item = NSMenuItem(title: "Open Magnify Playlist", action: "openMagnifyPlaylist", keyEquivalent: "")
+        item.enabled = true; return item
     }()
 
     lazy var quitMenuItem: NSMenuItem = {
         let item = NSMenuItem(title: "Quit Magnify", action: "terminate", keyEquivalent: "")
-        item.enabled = true
-        return item
+        item.enabled = true; return item
     }()
 
     lazy var menu: NSMenu = {
@@ -128,10 +133,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         menu.addItem(self.onOffMenuItem)
         menu.addItem(NSMenuItem.separatorItem())
         menu.addItem(self.launchAtLoginMenuItem)
+        menu.addItem(self.playlistMenuItem)
         menu.addItem(self.playCountMenuItem)
         menu.addItem(NSMenuItem.separatorItem())
         menu.addItem(self.quitMenuItem)
-        menu.addItem(NSMenuItem(title:"debug", action:"debug", keyEquivalent:""))
+//        menu.addItem(NSMenuItem(title:"debug", action:"debug", keyEquivalent:""))
         return menu
     }()
 
@@ -187,20 +193,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         updateLaunchAtLoginMenuItem()
         updatePlayCountMenuItem()
         updateStatusItem()
-        setupGroundControl()
+        registerRemoteUserDefaults()
     }
 
     func applicationWillTerminate(notification: NSNotification) {
         NSUserDefaults.standardUserDefaults().synchronize()
     }
 
-    func setupGroundControl() {
+    func registerRemoteUserDefaults() {
+        NSUserDefaults.configureResponseSerializer()
         let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.registerDefaultsWithURL(NSURL(string: ""),
-            success: { (payload) -> Void in
-
-            }) { (err) -> Void in
-                
+        // TODO: should host this plist somewhere else
+        let url = NSURL(string: "https://raw.githubusercontent.com/benzguo/magnify/master/defaults.plist")
+        defaults.registerDefaultsWithURL(url,
+            success: { defaults -> Void in
+            })
+            { err -> Void in
+                // TODO: log error
         }
     }
 
@@ -208,16 +217,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.isEnabled = !self.isEnabled
     }
 
-    func updateLaunchAtLoginMenuItem() {
-        let isLoginItem = NSBundle.mainBundle().isLoginItem()
-        launchAtLoginMenuItem.state = isLoginItem ? NSOnState : NSOffState
-    }
-
     func toggleLaunchAtLogin() {
         var isLoginItem = NSBundle.mainBundle().isLoginItem()
         if (isLoginItem) { NSBundle.mainBundle().removeFromLoginItems() }
         else { NSBundle.mainBundle().addToLoginItems() }
         updateLaunchAtLoginMenuItem()
+    }
+
+    func openMagnifyPlaylist() {
+        let url = NSUserDefaults.standardUserDefaults().stringForKey("MagnifyPlaylist")
+        url.map { SpotifyController.play($0) }
     }
 
     func terminate() {
