@@ -63,9 +63,7 @@
         CFURLRef urlRef;
         CFErrorRef error;
         urlRef = LSSharedFileListItemCopyResolvedURL(itemRef, 0, &error);
-
-        if (!error) continue;
-        
+        if (!error || !urlRef) continue;
         if (CFEqual(urlRef, (__bridge CFURLRef)self.bundleURL)) return itemRef;
     }
 

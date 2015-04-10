@@ -12,6 +12,17 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var window: NSWindow!
+    var _isEnabled = false
+    var isEnabled: Bool {
+        get {
+            return _isEnabled
+        }
+        set(enabled) {
+            self.statusMenuItem.title = enabled ? "Magnify: On" : "Magnify: Off"
+            self.onOffMenuItem.title = enabled ? "Turn Magnify Off" : "Turn Magnify On"
+            _isEnabled = enabled
+        }
+    }
 
     lazy var statusItem: NSStatusItem = {
         let item = NSStatusBar.systemStatusBar().statusItemWithLength(-1)
@@ -32,14 +43,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }()
 
     lazy var onOffMenuItem: NSMenuItem = {
-        let item = NSMenuItem(title: "Turn Magnify On", action: nil, keyEquivalent: "")
+        let item = NSMenuItem(title: "Turn Magnify On", action: "toggleOnOff", keyEquivalent: "")
         item.enabled = true
         return item
     }()
 
     lazy var launchAtLoginMenuItem: NSMenuItem = {
-        let item = NSMenuItem(title: "launch at login", action: nil, keyEquivalent: "")
+        let item = NSMenuItem(title: "Launch at login", action: "toggleLaunchAtLogin", keyEquivalent: "")
         item.enabled = true
+        item.state = NSOffState
         return item
     }()
 
@@ -62,17 +74,35 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         statusItem.menu = menu
+        updateLaunchAtLoginMenuItem()
+    }
+
+    func applicationWillTerminate(notification: NSNotification) {
+
+    }
+
+    func toggleOnOff() {
+        self.isEnabled = !self.isEnabled
+    }
+
+    func updateLaunchAtLoginMenuItem() {
+        let isLoginItem = NSBundle.mainBundle().isLoginItem()
+        launchAtLoginMenuItem.state = isLoginItem ? NSOnState : NSOffState
+    }
+
+    func toggleLaunchAtLogin() {
         var isLoginItem = NSBundle.mainBundle().isLoginItem()
         if (isLoginItem) {
+            NSBundle.mainBundle().removeFromLoginItems()
+        }
+        else {
             NSBundle.mainBundle().addToLoginItems()
         }
-        launchAtLoginMenuItem.title = isLoginItem ? "login item" : "not login item"
-        menu.update()
+        updateLaunchAtLoginMenuItem()
     }
 
     func terminate() {
         NSApplication.sharedApplication().terminate(statusItem.menu)
-        // Insert code here to tear down your application
     }
 
 }
