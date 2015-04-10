@@ -23,8 +23,8 @@ class SpotifyController {
         task.launch()
         task.waitUntilExit()
         let outHandle = outPipe.fileHandleForReading
-        let output = NSString(data: outHandle.availableData, encoding: NSASCIIStringEncoding)
-        return output as String?
+        let output = NSString(data: outHandle.availableData, encoding: NSASCIIStringEncoding) as NSString?
+        return output?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
     }
 
     class func trackInfoTask(command: String) -> String? {
@@ -99,6 +99,7 @@ class SpotifyController {
     class func currentTrackDuration() -> Int? { return trackInfoTask("duration")?.toInt() }
 
     /// The number of times this track has been played.
+    /// Note: This appears to be the number of times the current user has played the track.
     class func currentTrackPlayCount() -> Int? { return trackInfoTask("played count")?.toInt() }
 
     /// How popular is this track? 0-100

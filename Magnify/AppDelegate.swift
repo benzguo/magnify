@@ -9,11 +9,21 @@
 import Cocoa
 
 struct Constants {
-    // The base number of ticks between skips
-    static let skipInterval = 2
+    /// The base number of ticks between skips
+    /// This should be >= 15
+    static let skipInterval = 2//15
 
-    // Skip intervals will be padded with [1, randomPadRange] ticks
+    /// Skip intervals will be padded with a random number of ticks 
+    /// in the range [1, randomPadRange]
     static let randomPadRange = 2
+
+    /// Skip tracks with a popularity higher than this limit
+    static let popularityLimit = 50
+}
+
+struct UserDefaultsKeys {
+    /// total number of plays
+    static let totalPlayCount = "MagnifyTotalPlayCount"
 }
 
 @NSApplicationMain
@@ -77,6 +87,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return item
     }()
 
+    func updatePlayCountMenuItem() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let count = defaults.integerForKey(UserDefaultsKeys.totalPlayCount)
+        let s = count == 1 ? "" : "s"
+        playCountMenuItem.title = "\(count) play\(s)"
+    }
+    lazy var playCountMenuItem: NSMenuItem = {
+        let item = NSMenuItem(title: "", action: "toggleLaunchAtLogin", keyEquivalent: "")
+        item.enabled = false
+        return item
+    }()
+
     lazy var quitMenuItem: NSMenuItem = {
         let item = NSMenuItem(title: "Quit Magnify", action: "terminate", keyEquivalent: "")
         item.enabled = true
@@ -90,10 +112,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         menu.addItem(self.onOffMenuItem)
         menu.addItem(NSMenuItem.separatorItem())
         menu.addItem(self.launchAtLoginMenuItem)
+        menu.addItem(self.playCountMenuItem)
         menu.addItem(NSMenuItem.separatorItem())
         menu.addItem(self.quitMenuItem)
+        menu.addItem(NSMenuItem(title:"test", action:"test", keyEquivalent:""))
         return menu
     }()
+
+    func test() {
+        print(SpotifyController.currentTrackPopularity())
+    }
 
     func timerTick() {
         tickCount++
@@ -101,25 +129,48 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             tickCount = 0
             let randomPad = Int(arc4random_uniform(UInt32(Constants.randomPadRange)) + 1)
             targetTickCount = Constants.skipInterval + randomPad
-            // random walk
-            let shouldNext = arc4random_uniform(1) + 1 == 0
-            if shouldNext {
-                SpotifyController.nextTrack()
+
+            randomStep()
+            skipIfPopular()
+
+            // increment play count
+            let defaults = NSUserDefaults.standardUserDefaults()
+            let totalPlays = defaults.integerForKey(UserDefaultsKeys.totalPlayCount)
+            defaults.setInteger(totalPlays+1, forKey: UserDefaultsKeys.totalPlayCount)
+            updatePlayCountMenuItem()
+        }
+    }
+
+    /// skip track if it's over the popularity limit
+    func skipIfPopular() {
+        let maybePopularity = SpotifyController.currentTrackPopularity()
+        if let popularity = maybePopularity {
+            if popularity > Constants.popularityLimit {
+                randomStep()
+                skipIfPopular()
             }
-            else {
-                SpotifyController.previousTrack()
-                SpotifyController.previousTrack()
-            }
+        }
+    }
+
+    func randomStep() {
+        let shouldNext = arc4random_uniform(1) + 1 == 0
+        if shouldNext {
+            SpotifyController.nextTrack()
+        }
+        else {
+            SpotifyController.previousTrack()
+            SpotifyController.previousTrack()
         }
     }
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         statusItem.menu = menu
         updateLaunchAtLoginMenuItem()
+        updatePlayCountMenuItem()
     }
 
     func applicationWillTerminate(notification: NSNotification) {
-
+        NSUserDefaults.standardUserDefaults().synchronize()
     }
 
     func toggleOnOff() {
@@ -141,6 +192,5 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func terminate() {
         NSApplication.sharedApplication().terminate(statusItem.menu)
     }
-
 }
 
