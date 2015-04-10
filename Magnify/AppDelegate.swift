@@ -9,10 +9,10 @@
 import Cocoa
 
 struct Constants {
-    // The number of timer ticks between skips
+    // The base number of ticks between skips
     static let skipInterval = 2
 
-    // The range (in timer ticks) of the random padding
+    // Skip intervals will be padded with [1, randomPadRange] ticks
     static let randomPadRange = 2
 }
 
@@ -99,12 +99,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         tickCount++
         if tickCount >= targetTickCount {
             tickCount = 0
-            let randomPad = Int(arc4random_uniform(UInt32(Constants.randomPadRange)))
+            let randomPad = Int(arc4random_uniform(UInt32(Constants.randomPadRange)) + 1)
             targetTickCount = Constants.skipInterval + randomPad
-            SpotifyController.nextTrack()
-            print("next\n")
+            // random walk
+            let shouldNext = arc4random_uniform(1) + 1 == 0
+            if shouldNext {
+                SpotifyController.nextTrack()
+            }
+            else {
+                SpotifyController.previousTrack()
+                SpotifyController.previousTrack()
+            }
         }
-        print("tick\n")
     }
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
@@ -127,12 +133,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func toggleLaunchAtLogin() {
         var isLoginItem = NSBundle.mainBundle().isLoginItem()
-        if (isLoginItem) {
-            NSBundle.mainBundle().removeFromLoginItems()
-        }
-        else {
-            NSBundle.mainBundle().addToLoginItems()
-        }
+        if (isLoginItem) { NSBundle.mainBundle().removeFromLoginItems() }
+        else { NSBundle.mainBundle().addToLoginItems() }
         updateLaunchAtLoginMenuItem()
     }
 
