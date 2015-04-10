@@ -47,6 +47,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             _isEnabled = enabled
             self.statusMenuItem.title = enabled ? "Magnify: On" : "Magnify: Off"
             self.onOffMenuItem.title = enabled ? "Turn Magnify Off" : "Turn Magnify On"
+            self.updateStatusItem()
             if (enabled) {
                 SpotifyController.setRepeating(true)
                 self.timer.fireDate = NSDate(timeIntervalSinceNow: 1)
@@ -65,14 +66,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             target: self, selector: "timerTick", userInfo: nil, repeats: true)
     }()
 
+    func updateStatusItem() {
+        if isEnabled {
+            let image = NSImage(named: "statusItemOn")
+            image?.setTemplate(true)
+            statusItem.image = image
+        }
+        else {
+            let image = NSImage(named: "statusItemOff")
+            image?.setTemplate(true)
+            statusItem.image = image
+        }
+    }
     lazy var statusItem: NSStatusItem = {
         let item = NSStatusBar.systemStatusBar().statusItemWithLength(-1)
-        let image = NSImage(named: "statusItem")
-        image?.setTemplate(true)
-        item.image = image
-        let altImage = NSImage(named: "statusItemAlt")
-        altImage?.setTemplate(true)
-        item.alternateImage = altImage
         item.highlightMode = true
         return item
     }()
@@ -124,11 +131,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         menu.addItem(self.playCountMenuItem)
         menu.addItem(NSMenuItem.separatorItem())
         menu.addItem(self.quitMenuItem)
-        menu.addItem(NSMenuItem(title:"test", action:"test", keyEquivalent:""))
+        menu.addItem(NSMenuItem(title:"debug", action:"debug", keyEquivalent:""))
         return menu
     }()
 
-    func test() {
+    func debug() {
         print(SpotifyController.currentTrackPopularity())
     }
 
@@ -136,9 +143,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         tickCount++
         skipIfPopular()
         if tickCount >= targetTickCount {
-            tickCount = 0
-            let randomPad = Int(arc4random_uniform(UInt32(Constants.randomPadRange)) + 1)
-            targetTickCount = Constants.skipInterval + randomPad
+            resetTickCount()
             randomStep()
 
             // increment play count
@@ -149,11 +154,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
+    func resetTickCount() {
+        tickCount = 0
+        let randomPad = Int(arc4random_uniform(UInt32(Constants.randomPadRange)) + 1)
+        targetTickCount = Constants.skipInterval + randomPad
+    }
+
     /// skip track if it's over the popularity limit
     func skipIfPopular() {
         let maybePopularity = SpotifyController.currentTrackPopularity()
         if let popularity = maybePopularity {
             if popularity > Constants.popularityLimit {
+                resetTickCount()
                 randomStep()
             }
         }
@@ -174,10 +186,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusItem.menu = menu
         updateLaunchAtLoginMenuItem()
         updatePlayCountMenuItem()
+        updateStatusItem()
+        setupGroundControl()
     }
 
     func applicationWillTerminate(notification: NSNotification) {
         NSUserDefaults.standardUserDefaults().synchronize()
+    }
+
+    func setupGroundControl() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.registerDefaultsWithURL(NSURL(string: ""),
+            success: { (payload) -> Void in
+
+            }) { (err) -> Void in
+                
+        }
     }
 
     func toggleOnOff() {

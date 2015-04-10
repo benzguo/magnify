@@ -10,5 +10,6 @@
 #define Magnify_Magnify_Bridging_Header_h
 
 #import "NSBundle+LoginItem.h"
+#import "NSUserDefaults+GroundControl.h"
 
 #endif
