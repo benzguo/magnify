@@ -139,7 +139,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             tickCount = 0
             let randomPad = Int(arc4random_uniform(UInt32(Constants.randomPadRange)) + 1)
             targetTickCount = Constants.skipInterval + randomPad
-
             randomStep()
 
             // increment play count
