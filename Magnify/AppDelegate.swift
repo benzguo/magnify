@@ -8,6 +8,15 @@
 
 import Cocoa
 
+func delay(delay:Double, closure:()->()) {
+    dispatch_after(
+        dispatch_time(
+            DISPATCH_TIME_NOW,
+            Int64(delay * Double(NSEC_PER_SEC))
+        ),
+        dispatch_get_main_queue(), closure)
+}
+
 struct Constants {
     /// The base number of ticks between skips
     /// This should be >= 15
@@ -125,13 +134,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func timerTick() {
         tickCount++
+        skipIfPopular()
         if tickCount >= targetTickCount {
             tickCount = 0
             let randomPad = Int(arc4random_uniform(UInt32(Constants.randomPadRange)) + 1)
             targetTickCount = Constants.skipInterval + randomPad
 
             randomStep()
-            skipIfPopular()
 
             // increment play count
             let defaults = NSUserDefaults.standardUserDefaults()
@@ -147,13 +156,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if let popularity = maybePopularity {
             if popularity > Constants.popularityLimit {
                 randomStep()
-                skipIfPopular()
             }
         }
     }
 
     func randomStep() {
-        let shouldNext = arc4random_uniform(1) + 1 == 0
+        let shouldNext = arc4random_uniform(2) == 0
         if shouldNext {
             SpotifyController.nextTrack()
         }
