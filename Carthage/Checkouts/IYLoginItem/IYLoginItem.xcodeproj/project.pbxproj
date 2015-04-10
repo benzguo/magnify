@@ -1,0 +1,493 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		40029A261763C32A0049001F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 40029A241763C32A0049001F /* InfoPlist.strings */; };
+		40029A321763C3550049001F /* NSBundle+LoginItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 40029A301763C3550049001F /* NSBundle+LoginItem.h */; };
+		40029A331763C3550049001F /* NSBundle+LoginItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 40029A311763C3550049001F /* NSBundle+LoginItem.m */; };
+		40029A341763E8720049001F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40029A201763C32A0049001F /* Foundation.framework */; };
+		40029A371763E8840049001F /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40029A351763E87B0049001F /* CoreServices.framework */; };
+		40029A4B1763EDF20049001F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 40029A491763EDF20049001F /* InfoPlist.strings */; };
+		40029A551763EE100049001F /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40029A531763EE040049001F /* SenTestingKit.framework */; };
+		40029A561763EE170049001F /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40029A351763E87B0049001F /* CoreServices.framework */; };
+		40029A571763EE170049001F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40029A201763C32A0049001F /* Foundation.framework */; };
+		408825361763EF6300B4DEDD /* IYLoginItemTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 408825351763EF6300B4DEDD /* IYLoginItemTest.m */; };
+		408825371763F05200B4DEDD /* NSBundle+LoginItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 40029A311763C3550049001F /* NSBundle+LoginItem.m */; };
+		5306FBA5CAD64AFD9A4FA4B9 /* libPods-IYLoginItemTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 932829EC31DC473DBADF7157 /* libPods-IYLoginItemTests.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		40029A181763C32A0049001F /* IYLoginItem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IYLoginItem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		40029A201763C32A0049001F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		40029A231763C32A0049001F /* IYLoginItem-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IYLoginItem-Info.plist"; sourceTree = "<group>"; };
+		40029A251763C32A0049001F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		40029A271763C32A0049001F /* IYLoginItem-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IYLoginItem-Prefix.pch"; sourceTree = "<group>"; };
+		40029A301763C3550049001F /* NSBundle+LoginItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+LoginItem.h"; sourceTree = "<group>"; };
+		40029A311763C3550049001F /* NSBundle+LoginItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+LoginItem.m"; sourceTree = "<group>"; };
+		40029A351763E87B0049001F /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
+		40029A3D1763EDF20049001F /* IYLoginItemTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IYLoginItemTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		40029A431763EDF20049001F /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		40029A441763EDF20049001F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		40029A451763EDF20049001F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		40029A481763EDF20049001F /* IYLoginItemTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IYLoginItemTests-Info.plist"; sourceTree = "<group>"; };
+		40029A4A1763EDF20049001F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		40029A4F1763EDF30049001F /* IYLoginItemTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IYLoginItemTests-Prefix.pch"; sourceTree = "<group>"; };
+		40029A531763EE040049001F /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		408825351763EF6300B4DEDD /* IYLoginItemTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IYLoginItemTest.m; sourceTree = "<group>"; };
+		8A345368346C4D6DAF30DFFF /* Pods-IYLoginItemTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IYLoginItemTests.xcconfig"; path = "Pods/Pods-IYLoginItemTests.xcconfig"; sourceTree = SOURCE_ROOT; };
+		932829EC31DC473DBADF7157 /* libPods-IYLoginItemTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IYLoginItemTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		40029A141763C32A0049001F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40029A371763E8840049001F /* CoreServices.framework in Frameworks */,
+				40029A341763E8720049001F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		40029A391763EDF20049001F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40029A551763EE100049001F /* SenTestingKit.framework in Frameworks */,
+				40029A561763EE170049001F /* CoreServices.framework in Frameworks */,
+				40029A571763EE170049001F /* Foundation.framework in Frameworks */,
+				5306FBA5CAD64AFD9A4FA4B9 /* libPods-IYLoginItemTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		40029A0E1763C32A0049001F = {
+			isa = PBXGroup;
+			children = (
+				40029A211763C32A0049001F /* IYLoginItem */,
+				40029A461763EDF20049001F /* IYLoginItemTests */,
+				40029A1A1763C32A0049001F /* Frameworks */,
+				40029A191763C32A0049001F /* Products */,
+				8A345368346C4D6DAF30DFFF /* Pods-IYLoginItemTests.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		40029A191763C32A0049001F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				40029A181763C32A0049001F /* IYLoginItem.framework */,
+				40029A3D1763EDF20049001F /* IYLoginItemTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		40029A1A1763C32A0049001F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				40029A531763EE040049001F /* SenTestingKit.framework */,
+				40029A351763E87B0049001F /* CoreServices.framework */,
+				40029A201763C32A0049001F /* Foundation.framework */,
+				40029A421763EDF20049001F /* Other Frameworks */,
+				932829EC31DC473DBADF7157 /* libPods-IYLoginItemTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		40029A211763C32A0049001F /* IYLoginItem */ = {
+			isa = PBXGroup;
+			children = (
+				40029A221763C32A0049001F /* Supporting Files */,
+				40029A301763C3550049001F /* NSBundle+LoginItem.h */,
+				40029A311763C3550049001F /* NSBundle+LoginItem.m */,
+			);
+			path = IYLoginItem;
+			sourceTree = "<group>";
+		};
+		40029A221763C32A0049001F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				40029A231763C32A0049001F /* IYLoginItem-Info.plist */,
+				40029A241763C32A0049001F /* InfoPlist.strings */,
+				40029A271763C32A0049001F /* IYLoginItem-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		40029A421763EDF20049001F /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				40029A431763EDF20049001F /* AppKit.framework */,
+				40029A441763EDF20049001F /* CoreData.framework */,
+				40029A451763EDF20049001F /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		40029A461763EDF20049001F /* IYLoginItemTests */ = {
+			isa = PBXGroup;
+			children = (
+				40029A471763EDF20049001F /* Supporting Files */,
+				408825351763EF6300B4DEDD /* IYLoginItemTest.m */,
+			);
+			path = IYLoginItemTests;
+			sourceTree = "<group>";
+		};
+		40029A471763EDF20049001F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				40029A481763EDF20049001F /* IYLoginItemTests-Info.plist */,
+				40029A491763EDF20049001F /* InfoPlist.strings */,
+				40029A4F1763EDF30049001F /* IYLoginItemTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		40029A151763C32A0049001F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40029A321763C3550049001F /* NSBundle+LoginItem.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		40029A171763C32A0049001F /* IYLoginItem */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 40029A2D1763C32A0049001F /* Build configuration list for PBXNativeTarget "IYLoginItem" */;
+			buildPhases = (
+				40029A131763C32A0049001F /* Sources */,
+				40029A141763C32A0049001F /* Frameworks */,
+				40029A151763C32A0049001F /* Headers */,
+				40029A161763C32A0049001F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IYLoginItem;
+			productName = IYLoginItem;
+			productReference = 40029A181763C32A0049001F /* IYLoginItem.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		40029A3C1763EDF20049001F /* IYLoginItemTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 40029A501763EDF30049001F /* Build configuration list for PBXNativeTarget "IYLoginItemTests" */;
+			buildPhases = (
+				FC124D81FE0640C8AFDC72E1 /* Check Pods Manifest.lock */,
+				40029A381763EDF20049001F /* Sources */,
+				40029A391763EDF20049001F /* Frameworks */,
+				40029A3A1763EDF20049001F /* Resources */,
+				40029A3B1763EDF20049001F /* ShellScript */,
+				FF498CD47F1B4928BC97E608 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IYLoginItemTests;
+			productName = IYLoginItemTests;
+			productReference = 40029A3D1763EDF20049001F /* IYLoginItemTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		40029A0F1763C32A0049001F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Ian Ynda-Hummel";
+			};
+			buildConfigurationList = 40029A121763C32A0049001F /* Build configuration list for PBXProject "IYLoginItem" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 40029A0E1763C32A0049001F;
+			productRefGroup = 40029A191763C32A0049001F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				40029A171763C32A0049001F /* IYLoginItem */,
+				40029A3C1763EDF20049001F /* IYLoginItemTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		40029A161763C32A0049001F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40029A261763C32A0049001F /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		40029A3A1763EDF20049001F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40029A4B1763EDF20049001F /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		40029A3B1763EDF20049001F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		FC124D81FE0640C8AFDC72E1 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+		};
+		FF498CD47F1B4928BC97E608 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-IYLoginItemTests-resources.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		40029A131763C32A0049001F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40029A331763C3550049001F /* NSBundle+LoginItem.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		40029A381763EDF20049001F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				408825361763EF6300B4DEDD /* IYLoginItemTest.m in Sources */,
+				408825371763F05200B4DEDD /* NSBundle+LoginItem.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		40029A241763C32A0049001F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				40029A251763C32A0049001F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		40029A491763EDF20049001F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				40029A4A1763EDF20049001F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		40029A2B1763C32A0049001F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		40029A2C1763C32A0049001F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		40029A2E1763C32A0049001F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "IYLoginItem/IYLoginItem-Prefix.pch";
+				INFOPLIST_FILE = "IYLoginItem/IYLoginItem-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Debug;
+		};
+		40029A2F1763C32A0049001F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "IYLoginItem/IYLoginItem-Prefix.pch";
+				INFOPLIST_FILE = "IYLoginItem/IYLoginItem-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
+		40029A511763EDF30049001F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8A345368346C4D6DAF30DFFF /* Pods-IYLoginItemTests.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "IYLoginItemTests/IYLoginItemTests-Prefix.pch";
+				INFOPLIST_FILE = "IYLoginItemTests/IYLoginItemTests-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		40029A521763EDF30049001F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8A345368346C4D6DAF30DFFF /* Pods-IYLoginItemTests.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "IYLoginItemTests/IYLoginItemTests-Prefix.pch";
+				INFOPLIST_FILE = "IYLoginItemTests/IYLoginItemTests-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		40029A121763C32A0049001F /* Build configuration list for PBXProject "IYLoginItem" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				40029A2B1763C32A0049001F /* Debug */,
+				40029A2C1763C32A0049001F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		40029A2D1763C32A0049001F /* Build configuration list for PBXNativeTarget "IYLoginItem" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				40029A2E1763C32A0049001F /* Debug */,
+				40029A2F1763C32A0049001F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		40029A501763EDF30049001F /* Build configuration list for PBXNativeTarget "IYLoginItemTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				40029A511763EDF30049001F /* Debug */,
+				40029A521763EDF30049001F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 40029A0F1763C32A0049001F /* Project object */;
+}

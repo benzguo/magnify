@@ -1,0 +1,431 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		962B97561AD737A8001240D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962B97551AD737A8001240D8 /* AppDelegate.swift */; };
+		962B97581AD737A8001240D8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 962B97571AD737A8001240D8 /* Images.xcassets */; };
+		962B975B1AD737A8001240D8 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 962B97591AD737A8001240D8 /* MainMenu.xib */; };
+		962B97671AD737A8001240D8 /* MagnifyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962B97661AD737A8001240D8 /* MagnifyTests.swift */; };
+		962B97761AD7457E001240D8 /* NSBundle+LoginItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 962B97751AD7457E001240D8 /* NSBundle+LoginItem.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		962B97611AD737A8001240D8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 962B97481AD737A8001240D8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 962B974F1AD737A8001240D8;
+			remoteInfo = Magnify;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		962B97501AD737A8001240D8 /* Magnify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Magnify.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		962B97541AD737A8001240D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		962B97551AD737A8001240D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		962B97571AD737A8001240D8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		962B975A1AD737A8001240D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		962B97601AD737A8001240D8 /* MagnifyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MagnifyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		962B97651AD737A8001240D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		962B97661AD737A8001240D8 /* MagnifyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagnifyTests.swift; sourceTree = "<group>"; };
+		962B97741AD7457E001240D8 /* NSBundle+LoginItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+LoginItem.h"; sourceTree = "<group>"; };
+		962B97751AD7457E001240D8 /* NSBundle+LoginItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+LoginItem.m"; sourceTree = "<group>"; };
+		962B977C1AD745FB001240D8 /* Magnify-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Magnify-Bridging-Header.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		962B974D1AD737A8001240D8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		962B975D1AD737A8001240D8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		962B97471AD737A8001240D8 = {
+			isa = PBXGroup;
+			children = (
+				962B97521AD737A8001240D8 /* Magnify */,
+				962B97631AD737A8001240D8 /* MagnifyTests */,
+				962B97511AD737A8001240D8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		962B97511AD737A8001240D8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				962B97501AD737A8001240D8 /* Magnify.app */,
+				962B97601AD737A8001240D8 /* MagnifyTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		962B97521AD737A8001240D8 /* Magnify */ = {
+			isa = PBXGroup;
+			children = (
+				962B97551AD737A8001240D8 /* AppDelegate.swift */,
+				962B977C1AD745FB001240D8 /* Magnify-Bridging-Header.h */,
+				962B97701AD74437001240D8 /* Vendor */,
+				962B97571AD737A8001240D8 /* Images.xcassets */,
+				962B97591AD737A8001240D8 /* MainMenu.xib */,
+				962B97531AD737A8001240D8 /* Supporting Files */,
+			);
+			path = Magnify;
+			sourceTree = "<group>";
+		};
+		962B97531AD737A8001240D8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				962B97541AD737A8001240D8 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		962B97631AD737A8001240D8 /* MagnifyTests */ = {
+			isa = PBXGroup;
+			children = (
+				962B97661AD737A8001240D8 /* MagnifyTests.swift */,
+				962B97641AD737A8001240D8 /* Supporting Files */,
+			);
+			path = MagnifyTests;
+			sourceTree = "<group>";
+		};
+		962B97641AD737A8001240D8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				962B97651AD737A8001240D8 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		962B97701AD74437001240D8 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				962B97741AD7457E001240D8 /* NSBundle+LoginItem.h */,
+				962B97751AD7457E001240D8 /* NSBundle+LoginItem.m */,
+			);
+			name = Vendor;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		962B974F1AD737A8001240D8 /* Magnify */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 962B976A1AD737A8001240D8 /* Build configuration list for PBXNativeTarget "Magnify" */;
+			buildPhases = (
+				962B974C1AD737A8001240D8 /* Sources */,
+				962B974D1AD737A8001240D8 /* Frameworks */,
+				962B974E1AD737A8001240D8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Magnify;
+			productName = Magnify;
+			productReference = 962B97501AD737A8001240D8 /* Magnify.app */;
+			productType = "com.apple.product-type.application";
+		};
+		962B975F1AD737A8001240D8 /* MagnifyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 962B976D1AD737A8001240D8 /* Build configuration list for PBXNativeTarget "MagnifyTests" */;
+			buildPhases = (
+				962B975C1AD737A8001240D8 /* Sources */,
+				962B975D1AD737A8001240D8 /* Frameworks */,
+				962B975E1AD737A8001240D8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				962B97621AD737A8001240D8 /* PBXTargetDependency */,
+			);
+			name = MagnifyTests;
+			productName = MagnifyTests;
+			productReference = 962B97601AD737A8001240D8 /* MagnifyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		962B97481AD737A8001240D8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = "Net Sadness";
+				TargetAttributes = {
+					962B974F1AD737A8001240D8 = {
+						CreatedOnToolsVersion = 6.3;
+					};
+					962B975F1AD737A8001240D8 = {
+						CreatedOnToolsVersion = 6.3;
+						TestTargetID = 962B974F1AD737A8001240D8;
+					};
+				};
+			};
+			buildConfigurationList = 962B974B1AD737A8001240D8 /* Build configuration list for PBXProject "Magnify" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 962B97471AD737A8001240D8;
+			productRefGroup = 962B97511AD737A8001240D8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				962B974F1AD737A8001240D8 /* Magnify */,
+				962B975F1AD737A8001240D8 /* MagnifyTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		962B974E1AD737A8001240D8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				962B97581AD737A8001240D8 /* Images.xcassets in Resources */,
+				962B975B1AD737A8001240D8 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		962B975E1AD737A8001240D8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		962B974C1AD737A8001240D8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				962B97561AD737A8001240D8 /* AppDelegate.swift in Sources */,
+				962B97761AD7457E001240D8 /* NSBundle+LoginItem.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		962B975C1AD737A8001240D8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				962B97671AD737A8001240D8 /* MagnifyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		962B97621AD737A8001240D8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 962B974F1AD737A8001240D8 /* Magnify */;
+			targetProxy = 962B97611AD737A8001240D8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		962B97591AD737A8001240D8 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				962B975A1AD737A8001240D8 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		962B97681AD737A8001240D8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		962B97691AD737A8001240D8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		962B976B1AD737A8001240D8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Magnify/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Magnify/Magnify-Bridging-Header.h";
+			};
+			name = Debug;
+		};
+		962B976C1AD737A8001240D8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Magnify/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Magnify/Magnify-Bridging-Header.h";
+			};
+			name = Release;
+		};
+		962B976E1AD737A8001240D8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MagnifyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Magnify.app/Contents/MacOS/Magnify";
+			};
+			name = Debug;
+		};
+		962B976F1AD737A8001240D8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MagnifyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Magnify.app/Contents/MacOS/Magnify";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		962B974B1AD737A8001240D8 /* Build configuration list for PBXProject "Magnify" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				962B97681AD737A8001240D8 /* Debug */,
+				962B97691AD737A8001240D8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		962B976A1AD737A8001240D8 /* Build configuration list for PBXNativeTarget "Magnify" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				962B976B1AD737A8001240D8 /* Debug */,
+				962B976C1AD737A8001240D8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		962B976D1AD737A8001240D8 /* Build configuration list for PBXNativeTarget "MagnifyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				962B976E1AD737A8001240D8 /* Debug */,
+				962B976F1AD737A8001240D8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 962B97481AD737A8001240D8 /* Project object */;
+}
