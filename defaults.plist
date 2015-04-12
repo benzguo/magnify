@@ -3,10 +3,16 @@
 <plist version="1.0">
 <dict>
 	<key>skipInterval</key>
-	<integer>15</integer>
+	<string>15</string>
 	<key>randomPadRange</key>
-	<integer>2</integer>
+	<string>2</string>
 	<key>popularityLimit</key>
-	<integer>50</integer>
+	<string>50</string>
+	<key>shouldShowUpdateAlert</key>
+	<string>1</string>
+	<key>updateAlertMessage</key>
+	<string>🌊🌊🌊🌊🌊🌊🌊🌊🌊</string>
+	<key>updateURL</key>
+	<string>http://benzguo.com/about</string>
 </dict>
 </plist>

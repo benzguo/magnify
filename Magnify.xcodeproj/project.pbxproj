@@ -32,6 +32,7 @@
 		96501EF51ADB04D70081144E /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96501EF41ADB04D70081144E /* UserDefaultsKeys.swift */; };
 		96501EF71ADB07170081144E /* NSMenuItemExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96501EF61ADB07170081144E /* NSMenuItemExtension.swift */; };
 		96501EF91ADB090D0081144E /* NSImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96501EF81ADB090D0081144E /* NSImageExtension.swift */; };
+		96501EFB1ADB14430081144E /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96501EFA1ADB14430081144E /* AlertManager.swift */; };
 		96CA1BAD1AD7832E00398CFD /* Spotify.sdef in Resources */ = {isa = PBXBuildFile; fileRef = 96CA1BAC1AD7832E00398CFD /* Spotify.sdef */; };
 /* End PBXBuildFile section */
 
@@ -89,6 +90,7 @@
 		96501EF41ADB04D70081144E /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
 		96501EF61ADB07170081144E /* NSMenuItemExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSMenuItemExtension.swift; sourceTree = "<group>"; };
 		96501EF81ADB090D0081144E /* NSImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSImageExtension.swift; sourceTree = "<group>"; };
+		96501EFA1ADB14430081144E /* AlertManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		96CA1BAC1AD7832E00398CFD /* Spotify.sdef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Spotify.sdef; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -195,6 +197,7 @@
 				96501EF41ADB04D70081144E /* UserDefaultsKeys.swift */,
 				96501EF61ADB07170081144E /* NSMenuItemExtension.swift */,
 				96501EF81ADB090D0081144E /* NSImageExtension.swift */,
+				96501EFA1ADB14430081144E /* AlertManager.swift */,
 				962B977C1AD745FB001240D8 /* Magnify-Bridging-Header.h */,
 				9621EE071AD88D3C00074CF0 /* NSUserDefaults+Magnify.h */,
 				9621EE081AD88D3C00074CF0 /* NSUserDefaults+Magnify.m */,
@@ -353,6 +356,7 @@
 				96501EF51ADB04D70081144E /* UserDefaultsKeys.swift in Sources */,
 				9621EE541ADAEE5A00074CF0 /* SpotifyController.swift in Sources */,
 				9621EE491ADAEE3B00074CF0 /* AFURLRequestSerialization.m in Sources */,
+				96501EFB1ADB14430081144E /* AlertManager.swift in Sources */,
 				96501EF11ADAF6250081144E /* RemoteDefaults.swift in Sources */,
 				962B97561AD737A8001240D8 /* AppDelegate.swift in Sources */,
 				96501EF91ADB090D0081144E /* NSImageExtension.swift in Sources */,

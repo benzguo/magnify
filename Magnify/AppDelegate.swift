@@ -11,9 +11,8 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    lazy var remoteDefaults: RemoteDefaults = {
-        return RemoteDefaults()
-    }()
+    lazy var remoteDefaults: RemoteDefaults = { RemoteDefaults() }()
+    lazy var alertManager: AlertManager = { AlertManager() }()
 
     lazy var bundleName: String = {
         let maybeName: AnyObject? = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleName")
@@ -33,6 +32,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             if (enabled) {
                 SpotifyController.setRepeating(true)
                 self.timer.fireDate = NSDate(timeIntervalSinceNow: 1)
+                alertManager.showUpdateAlertIfNeeded()
             }
             else {
                 SpotifyController.setRepeating(false)
@@ -90,7 +90,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         menu.addItem(self.playCountMenuItem)
         menu.addItem(NSMenuItem.separatorItem())
         menu.addItem(self.quitMenuItem)
-//        menu.addItem(NSMenuItem(title:"debug", action:"debug", keyEquivalent:""))
+        menu.addItem(NSMenuItem(title:"debug", action:"debug", keyEquivalent:""))
         return menu
     }()
 
@@ -147,6 +147,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         updatePlayCountMenuItem()
         updateStatusItem()
         RemoteDefaults.registerRemoteDefaults()
+        alertManager.showUpdateAlertIfNeeded()
     }
 
     func applicationWillTerminate(notification: NSNotification) {
