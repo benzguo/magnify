@@ -2,7 +2,11 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>MagnifyPlaylist</key>
-	<string>spotify:user:123142064:playlist:0glrzH9HYvGqsQQzs9Qcft</string>
+	<key>skipInterval</key>
+	<integer>15</integer>
+	<key>randomPadRange</key>
+	<integer>2</integer>
+	<key>popularityLimit</key>
+	<integer>50</integer>
 </dict>
 </plist>

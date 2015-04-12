@@ -8,45 +8,27 @@
 
 import Cocoa
 
-func delay(delay:Double, closure:()->()) {
-    dispatch_after(
-        dispatch_time(
-            DISPATCH_TIME_NOW,
-            Int64(delay * Double(NSEC_PER_SEC))
-        ),
-        dispatch_get_main_queue(), closure)
-}
-
-struct Constants {
-    /// The base number of ticks between skips
-    /// This should be >= 15
-    static let skipInterval = 2//15
-
-    /// Skip intervals will be padded with a random number of ticks 
-    /// in the range [1, randomPadRange]
-    static let randomPadRange = 2
-
-    /// Skip tracks with a popularity higher than this limit
-    static let popularityLimit = 50
-}
-
-struct UserDefaultsKeys {
-    /// total number of plays
-    static let totalPlayCount = "MagnifyTotalPlayCount"
-}
-
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
+    lazy var remoteDefaults: RemoteDefaults = {
+        return RemoteDefaults()
+    }()
+
+    lazy var bundleName: String = {
+        let maybeName: AnyObject? = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleName")
+        let maybeString: String? = maybeName.map { $0 is String ? $0 : "Magnify"} as! String?
+        if let string = maybeString { return string }
+        else { return "Magnify" }
+    }()
+
     var _isEnabled = false
     var isEnabled: Bool {
-        get {
-            return _isEnabled
-        }
+        get { return _isEnabled }
         set(enabled) {
             _isEnabled = enabled
-            self.statusMenuItem.title = enabled ? "Magnify: On" : "Magnify: Off"
-            self.onOffMenuItem.title = enabled ? "Turn Magnify Off" : "Turn Magnify On"
+            self.statusMenuItem.title = enabled ? "\(bundleName): On" : "\(bundleName): Off"
+            self.onOffMenuItem.title = enabled ? "Turn \(bundleName) Off" : "Turn \(bundleName) On"
             self.updateStatusItem()
             if (enabled) {
                 SpotifyController.setRepeating(true)
@@ -60,49 +42,28 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     var tickCount: Int = 0
-    var targetTickCount: Int = Constants.skipInterval
+    var targetTickCount: Int = 0
     lazy var timer: NSTimer = {
-        return NSTimer.scheduledTimerWithTimeInterval(2,
-            target: self, selector: "timerTick", userInfo: nil, repeats: true)
+        NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: "timerTick", userInfo: nil, repeats: true)
     }()
 
-    func updateStatusItem() {
-        if isEnabled {
-            let image = NSImage(named: "statusItemOn")
-            image?.setTemplate(true)
-            statusItem.image = image
-        }
-        else {
-            let image = NSImage(named: "statusItemOff")
-            image?.setTemplate(true)
-            statusItem.image = image
-        }
-    }
+    lazy var statusItem: NSStatusItem = { NSStatusBar.systemStatusBar().statusItemWithLength(-1) }()
 
-    lazy var statusItem: NSStatusItem = {
-        let item = NSStatusBar.systemStatusBar().statusItemWithLength(-1)
-        item.highlightMode = true; return item
-    }()
+    func updateStatusItem() { statusItem.image = isEnabled ? NSImage.statusItemOn() : NSImage.statusItemOff() }
 
-    lazy var statusMenuItem: NSMenuItem = {
-        let item = NSMenuItem(title: "Magnify: Off", action: nil, keyEquivalent: "")
-        item.enabled = false; return item
-    }()
+    lazy var statusMenuItem: NSMenuItem = { NSMenuItem(title: "\(self.bundleName): Off", action: nil, enabled: false) }()
 
     lazy var onOffMenuItem: NSMenuItem = {
-        let item = NSMenuItem(title: "Turn Magnify On", action: "toggleOnOff", keyEquivalent: "")
-        item.enabled = true; return item
+        NSMenuItem(title: "Turn \(self.bundleName) On", action: "toggleOnOff", enabled: true)
+    }()
+
+    lazy var launchAtLoginMenuItem: NSMenuItem = {
+        NSMenuItem(title: "Launch at login", action: "toggleLaunchAtLogin", enabled: true)
     }()
 
     func updateLaunchAtLoginMenuItem() {
-        let isLoginItem = NSBundle.mainBundle().isLoginItem()
-        launchAtLoginMenuItem.state = isLoginItem ? NSOnState : NSOffState
+        launchAtLoginMenuItem.state = NSBundle.mainBundle().isLoginItem() ? NSOnState : NSOffState
     }
-
-    lazy var launchAtLoginMenuItem: NSMenuItem = {
-        let item = NSMenuItem(title: "Launch at login", action: "toggleLaunchAtLogin", keyEquivalent: "")
-        item.enabled = true; item.state = NSOffState; return item
-    }()
 
     func updatePlayCountMenuItem() {
         let defaults = NSUserDefaults.standardUserDefaults()
@@ -112,18 +73,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     lazy var playCountMenuItem: NSMenuItem = {
-        let item = NSMenuItem(title: "", action: "toggleLaunchAtLogin", keyEquivalent: "")
-        item.enabled = false; return item
-    }()
-
-    lazy var playlistMenuItem: NSMenuItem = {
-        let item = NSMenuItem(title: "Open Magnify Playlist", action: "openMagnifyPlaylist", keyEquivalent: "")
-        item.enabled = true; return item
+        NSMenuItem(title: "", action: "toggleLaunchAtLogin", enabled: false)
     }()
 
     lazy var quitMenuItem: NSMenuItem = {
-        let item = NSMenuItem(title: "Quit Magnify", action: "terminate", keyEquivalent: "")
-        item.enabled = true; return item
+        NSMenuItem(title: "Quit \(self.bundleName)", action: "terminate", enabled: true)
     }()
 
     lazy var menu: NSMenu = {
@@ -133,7 +87,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         menu.addItem(self.onOffMenuItem)
         menu.addItem(NSMenuItem.separatorItem())
         menu.addItem(self.launchAtLoginMenuItem)
-        menu.addItem(self.playlistMenuItem)
         menu.addItem(self.playCountMenuItem)
         menu.addItem(NSMenuItem.separatorItem())
         menu.addItem(self.quitMenuItem)
@@ -162,15 +115,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func resetTickCount() {
         tickCount = 0
-        let randomPad = Int(arc4random_uniform(UInt32(Constants.randomPadRange)) + 1)
-        targetTickCount = Constants.skipInterval + randomPad
+        let randomPad = Int(arc4random_uniform(UInt32(remoteDefaults.randomPadRange)) + 1)
+        targetTickCount = remoteDefaults.skipInterval + randomPad
     }
 
     /// skip track if it's over the popularity limit
     func skipIfPopular() {
         let maybePopularity = SpotifyController.currentTrackPopularity()
         if let popularity = maybePopularity {
-            if popularity > Constants.popularityLimit {
+            if popularity > remoteDefaults.popularityLimit {
                 resetTickCount()
                 randomStep()
             }
@@ -193,24 +146,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         updateLaunchAtLoginMenuItem()
         updatePlayCountMenuItem()
         updateStatusItem()
-        registerRemoteUserDefaults()
+        RemoteDefaults.registerRemoteDefaults()
     }
 
     func applicationWillTerminate(notification: NSNotification) {
         NSUserDefaults.standardUserDefaults().synchronize()
-    }
-
-    func registerRemoteUserDefaults() {
-        NSUserDefaults.configureResponseSerializer()
-        let defaults = NSUserDefaults.standardUserDefaults()
-        // TODO: should host this plist somewhere else
-        let url = NSURL(string: "https://raw.githubusercontent.com/benzguo/magnify/master/defaults.plist")
-        defaults.registerDefaultsWithURL(url,
-            success: { defaults -> Void in
-            })
-            { err -> Void in
-                // TODO: log error
-        }
     }
 
     func toggleOnOff() {
@@ -222,11 +162,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if (isLoginItem) { NSBundle.mainBundle().removeFromLoginItems() }
         else { NSBundle.mainBundle().addToLoginItems() }
         updateLaunchAtLoginMenuItem()
-    }
-
-    func openMagnifyPlaylist() {
-        let url = NSUserDefaults.standardUserDefaults().stringForKey("MagnifyPlaylist")
-        url.map { SpotifyController.play($0) }
     }
 
     func terminate() {
