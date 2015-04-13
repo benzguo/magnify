@@ -1,5 +1,7 @@
 # magnify
 
+![Hero](/Design/hero1024.png?raw=true)
+
 ### References
 * [SpotifyController](https://github.com/benzguo/SpotifyController)
 * [Damon Krukowski – Making Cents](http://pitchfork.com/features/articles/8993-the-cloud/)
