@@ -21,19 +21,15 @@ class AlertManager: NSObject, NSAlertDelegate {
             alert.addButtonWithTitle("Download update")
             alert.addButtonWithTitle("Cancel")
             alert.delegate = self
-            let button = alert.buttons.first as! NSButton
-//            if let window = NSApplication.sharedApplication().mainWindow {
-                alert.beginSheetModalForWindow(, completionHandler: { (response) -> Void in
-                    switch (response) {
-                    case NSAlertFirstButtonReturn:
-                        self.remoteDefaults.updateURL.map {
-                            NSWorkspace.sharedWorkspace().openURL($0)
-                        }
-                    default:
-                        return
-                    }
-                })
-//            }
+            let response = alert.runModal()
+            switch (response) {
+            case NSAlertFirstButtonReturn:
+                self.remoteDefaults.updateURL.map {
+                    NSWorkspace.sharedWorkspace().openURL($0)
+                }
+            default:
+                return
+            }
         }
     }
 }

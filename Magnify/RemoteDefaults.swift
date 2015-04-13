@@ -18,6 +18,7 @@ class RemoteDefaults
         let url = NSURL(string: "https://raw.githubusercontent.com/benzguo/magnify/master/defaults.plist")
         defaults.registerDefaultsWithURL(url,
             success: { defaults -> Void in
+                
             })
             { err -> Void in
                 // TODO: log error

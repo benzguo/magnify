@@ -147,7 +147,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         updatePlayCountMenuItem()
         updateStatusItem()
         RemoteDefaults.registerRemoteDefaults()
-        alertManager.showUpdateAlertIfNeeded()
     }
 
     func applicationWillTerminate(notification: NSNotification) {
