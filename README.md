@@ -1,5 +1,3 @@
-# magnify
-
 ![Hero](/Design/hero1024.png?raw=true)
 
 ### References
