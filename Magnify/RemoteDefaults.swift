@@ -44,9 +44,21 @@ class RemoteDefaults
     }()
 
     /// The message for the update alert
-    lazy var updateAlertMessage: String = {
-        let maybe = self.stringForKey("updateAlertMessage")
+    lazy var updateMessageText: String = {
+        let maybe = self.stringForKey("updateMessageText")
         return maybe != nil ? maybe! : ""
+    }()
+
+    /// The body of the update alert
+    lazy var updateInformativeText: String = {
+        let maybe = self.stringForKey("updateInformativeText")
+        return maybe != nil ? maybe! : ""
+    }()
+
+    /// The body of the update alert
+    lazy var updateButtonText: String = {
+        let maybe = self.stringForKey("updateButtonText")
+        return maybe != nil ? maybe! : "Ok"
     }()
 
     /// The URL of the update

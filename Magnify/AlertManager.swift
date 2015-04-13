@@ -16,9 +16,9 @@ class AlertManager: NSObject, NSAlertDelegate {
         let shouldShow = remoteDefaults.shouldShowUpdateAlert
         if shouldShow {
             let alert = NSAlert()
-            alert.informativeText = "Update available"
-            alert.messageText = remoteDefaults.updateAlertMessage
-            alert.addButtonWithTitle("Download update")
+            alert.messageText = remoteDefaults.updateMessageText
+            alert.informativeText = remoteDefaults.updateInformativeText
+            alert.addButtonWithTitle(remoteDefaults.updateButtonText)
             alert.addButtonWithTitle("Cancel")
             alert.delegate = self
             let response = alert.runModal()
